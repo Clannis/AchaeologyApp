@@ -8,5 +8,16 @@ class UserController < ApplicationController
           redirect "/dig_sites/index"
         end
     end
+
+    post "/signup" do
+        if !params[:username].empty? && (!params[:email].empty? && params[:email].include?("@")) && !params[:password].empty?
+            user = User.new(username: params[:username], email: params[:email], password: params[:password])
+            if user.save
+            session[:user_id] = user.id
+            redirect "/dig_sites/index"
+            end
+        end
+        redirect "/signup"
+    end
     
 end
