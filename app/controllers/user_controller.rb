@@ -29,7 +29,11 @@ class UserController < ApplicationController
     end
 
     post "/login" do 
-        user = User.find_by(username: params[:username])
+        if params[:user].include?("@")
+            user = User.find_by(email: params[:user])
+        else
+            user = User.find_by(username: params[:user])
+        end
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
           redirect "/dig_sites/index"
