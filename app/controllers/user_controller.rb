@@ -38,4 +38,13 @@ class UserController < ApplicationController
         end
     end
 
+    get "/logout" do
+        if session[:user_id]
+            session.clear
+            redirect "/login"
+        else
+            redirect "/"
+        end
+    end
+
 end
