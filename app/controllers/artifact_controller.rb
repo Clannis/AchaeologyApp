@@ -1,0 +1,3 @@
+class ArtifactController < ApplicationController
+
+end

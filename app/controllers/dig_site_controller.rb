@@ -1,0 +1,3 @@
+class DigSiteController < ApplicationController
+
+end
