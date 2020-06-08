@@ -1,4 +1,4 @@
 class Artifact < ActiveRecord::Base
-    belongs_to:levels
-    
+    belongs_to:level
+
 end
