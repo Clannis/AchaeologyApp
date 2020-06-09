@@ -4,6 +4,7 @@ class CreateLevels < ActiveRecord::Migration[6.0]
       t.string :beg_depth
       t.string :end_depth
       t.integer :unit_id
+      t.string :local_id
     end
   end
 end
