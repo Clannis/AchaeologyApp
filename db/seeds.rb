@@ -7,8 +7,8 @@ dig_site1 = DigSite.create(name: "0001", location: "spain", archaeologist: user1
 dig_site2 = DigSite.create(name: "0002", location: "rome", archaeologist: user3, user_id: user3.id)
 
 unit1 = Unit.create(local_id: "01", size: "1x1 meter", dig_site_id: dig_site1.id)
-unit2 = Unit.create(local_id: "02", size: "1x1 meter", dig_site_id: dig_site2.id)
-unit3 = Unit.create(local_id: "01", size: "1x1 meter", dig_site_id: dig_site1.id)
+unit2 = Unit.create(local_id: "01", size: "1x1 meter", dig_site_id: dig_site2.id)
+unit3 = Unit.create(local_id: "02", size: "1x1 meter", dig_site_id: dig_site1.id)
 unit4 = Unit.create(local_id: "02", size: "1x1 meter", dig_site_id: dig_site2.id)
 
 level1 = Level.create(local_id: "01", beg_depth: "0cm", end_depth: "10cm", unit_id: unit1.id)
