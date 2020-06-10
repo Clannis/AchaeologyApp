@@ -12,5 +12,13 @@ group :development do
     gem "shotgun", "~> 0.9.2"
     gem "tux", "~> 0.3.0"
     gem "pry", "~> 0.13.1"
-    gem "rspec", "~> 3.9"
 end
+
+group :test do
+    gem "pry", "~> 0.13.1"
+    gem "capybara", "~> 3.32"
+    gem "rspec", "~> 3.9"
+    gem "rack-test", "~> 0.6.3"
+    gem "database_cleaner", "~> 1.8"
+end
+
