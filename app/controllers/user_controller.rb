@@ -3,7 +3,7 @@ class UserController < ApplicationController
     get "/signup" do
         if !session[:user_id]
           @error = false
-          erb :create_user
+          erb :"/users/create_user"
         else
           redirect "/dig_sites/index"
         end
@@ -11,10 +11,14 @@ class UserController < ApplicationController
 
     post "/signup" do
         if !params[:username].empty? && (!params[:email].empty? && params[:email].include?("@")) && !params[:password].empty?
-            user = User.new(username: params[:username], email: params[:email], password: params[:password], admin: params[:admin])
+            user = User.new(username: params[:username], email: params[:email], password: params[:password], admin: (params[:admin] == "on" ? true : false) )
             if user.save
-            session[:user_id] = user.id
-            redirect "/dig_sites/index"
+              session[:user_id] = user.id
+              if user.admin == false
+                redirect "/team_member/new"
+              else
+                redirect "/dig_sites/index"
+              end
             end
         end
         redirect "/signup"
@@ -24,7 +28,7 @@ class UserController < ApplicationController
         if session[:user_id]
           redirect "/dig_sites/index"
         else
-          erb :login
+          erb :"/users/login"
         end
     end
 

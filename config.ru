@@ -6,4 +6,5 @@ use DigSiteController
 use LevelController
 use UnitController
 use UserController
+use TeamMemberController
 run ApplicationController
