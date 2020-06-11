@@ -1,0 +1,8 @@
+<h3> <%= @user.username %>'s Info:</h3>
+
+<form action="/users/<%= @user.id %>" method="post">
+<input type="hidden" name="_method" id="hidden" value="patch">
+<label for="name">Name: </label> <input type="text" name="name" id="name" placeholder="<%= @user.display_name %>"><br>
+<label for="location">Email: </label> <input type="text" name="email" id="email" placeholder="<%= @user.email %>"><br>
+<input type="submit" value="Update">
+</form>
