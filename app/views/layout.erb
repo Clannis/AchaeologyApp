@@ -6,9 +6,15 @@
   <body>
 
     <div class="container">
-      <h1>American Archaeological Database</h1><h5><a href="/">Go Home</a></h5>
-      
-       <%= yield %>
+      <h1>American Archaeological Database</h1>
+      <div class="links">
+        <h5><a href="/">Go Home</a>
+        <% if logged_in? %> 
+          | <a href="/logout">Log Out</a>
+          | <a href="/user">Account</a>
+        <% end %></h5>
+      </div>
+      <%= yield %>
     </div>
 
   </body>

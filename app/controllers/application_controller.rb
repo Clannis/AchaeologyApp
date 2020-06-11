@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
 
     get "/" do
         if logged_in?
-            redirect "/dig_sites/index"
+            redirect "/dig_sites"
         else
             erb :index
         end

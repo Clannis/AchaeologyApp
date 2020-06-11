@@ -5,7 +5,7 @@ class UserController < ApplicationController
           @error = false
           erb :"/users/create_user"
         else
-          redirect "/dig_sites/index"
+          redirect "/dig_sites"
         end
     end
 
@@ -14,7 +14,7 @@ class UserController < ApplicationController
             @user = User.new(username: params[:username], email: params[:email], password: params[:password], name: slug(params[:name]))
             if @user.save
               session[:user_id] = @user.id
-              redirect "/dig_sites/index"
+              redirect "/dig_sites"
             else
               erb :"/users/create_user"
             end
@@ -25,7 +25,7 @@ class UserController < ApplicationController
     
     get "/login" do
         if session[:user_id]
-          redirect "/dig_sites/index"
+          redirect "/dig_sites"
         else
           erb :"/users/login"
         end
@@ -40,7 +40,7 @@ class UserController < ApplicationController
         if user 
           if user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect "/dig_sites/index"
+            redirect "/dig_sites"
           else
             @error = "Incorrect password"
             erb :"/users/login"
@@ -58,6 +58,11 @@ class UserController < ApplicationController
         else
             redirect "/"
         end
+    end
+
+    get "/user" do
+      @user = current_user
+      erb :"/users/edit"
     end
     
 end
