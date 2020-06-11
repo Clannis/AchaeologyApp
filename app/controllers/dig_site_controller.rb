@@ -5,6 +5,10 @@ class DigSiteController < ApplicationController
         erb :"/dig_sites/index"
     end
 
+    get "/dig_sites/new" do
+        erb :"/dig_sites/new"
+    end
+
     get "/dig_sites/:id" do
         @dig_site = DigSite.find(params[:id])
         erb :"/dig_sites/show"
@@ -29,7 +33,8 @@ class DigSiteController < ApplicationController
         @dig_site.save
 
         redirect :"/dig_sites"
-
     end
+
+    
     
 end
