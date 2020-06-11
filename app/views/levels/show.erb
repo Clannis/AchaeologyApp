@@ -1,12 +1,13 @@
-<h3><%= @user.username%>'s Dig Sites</h3>
-
-<% @user.dig_sites.each do |dig_site| %>
-    <li><a href="/dig_sites/<%= dig_site.id %>"><%= dig_site.name %>, <%= dig_site.location %></a>
-            <%# <form method="post" action="/dig_sites/#{dig_site.id}/edit">
+<h3>Level: <%= @level.local_id %></h3>
+<ul>
+    <% @level.artifacts.each do |artifact| %>
+        <li>Artifact: <a href="/artifacts/<%= artifact.id %>"><%= artifact.local_id %></a>
+            <%# <form method="get" action="/dig_sites/#{dig_site.id}/edit">
             <input type="hidden" name="_method" id="hidden" value="patch">
             <input type="submit" value="Update"></form>
             <form method="post" action="/dig_sites/#{dig_site.id}/delete">
             <input type="hidden" name="_method" id="hidden" value="delete">
             <input type="submit" value="Delete"></form> %>
             </li>
-<% end %>
+    <% end %>
+</ul>

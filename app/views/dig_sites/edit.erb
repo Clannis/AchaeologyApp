@@ -1,0 +1,8 @@
+<h3>Dig Site <%= @dig_site.name %></h3>
+
+<form action="/dig_sites/<%= @dig_site.id %>" method="post">
+<label for="name">Dig Site Name: </label> <input type="text" name="name" id="name" placeholder="<%= @dig_site.name %>"><br>
+<label for="location">Dig Site location: </label> <input type="text" name="name" id="name" placeholder="<%= @dig_site.location %>"><br>
+<label for="owner">Transfer Ownership? </label> <input type="text" name="owner" id="owner" placeholder="Enter new owner's name"><br>
+<input type="submit" value="Update">
+</form>

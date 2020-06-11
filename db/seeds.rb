@@ -27,4 +27,4 @@ artifact4 = Artifact.create(local_id: "01", artifact_type: "sherd", description:
 artifact5 = Artifact.create(local_id: "01", artifact_type: "glass", description: "piece of glass", level_id: level5.id)
 artifact6 = Artifact.create(local_id: "01", artifact_type: "pipe", description: "corncob pipe", level_id: level6.id)
 artifact7 = Artifact.create(local_id: "01", artifact_type: "shard", description: "pottery shard", level_id: level8.id)
-artifact8 = Artifact.create(local_id: "01", artifact_type: "bone", description: "mandible", level_id: level1.id)
+artifact8 = Artifact.create(local_id: "02", artifact_type: "bone", description: "mandible", level_id: level1.id)

@@ -1,0 +1,11 @@
+<h3>Artifact: <%= @artifact.local_id %></h3>
+
+<h5>Type: <%= @artifact.artifact_type%></h5>
+<h5>Description: <%= @artifact.artifact_type%></h5>
+<% if @index != 0 %>
+    <a href="/artifacts/<%= @unit.artifacts[@index - 1].id %>">Previous Artifact</a>
+<% end %>
+<% if @index != @unit.artifacts.length - 1 %>
+    <a href="/artifacts/<%= @unit.artifacts[@index + 1].id %>">Next Artifact</a>
+<% end %>
+

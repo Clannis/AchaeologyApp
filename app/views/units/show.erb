@@ -1,0 +1,13 @@
+<h3>Unit: <%= @unit.local_id %></h3>
+    <form method="get" action="/units/<%= @unit.id %>/edit">
+    <input type="submit" value="Update"></form>
+    <form method="post" action="/units/<%= @unit.id %>/delete">
+    <input type="hidden" name="_method" id="hidden" value="delete">
+    <input type="submit" value="Delete"></form>
+
+    <h4>Levels:</h4>
+<ul>
+    <% @unit.levels.each do |level| %>
+        <li>Level: <a href="/levels/<%= level.id %>"><%= level.local_id %>, <%= level.beg_depth %> - <%= level.end_depth %></a></li>
+    <% end %>
+</ul>

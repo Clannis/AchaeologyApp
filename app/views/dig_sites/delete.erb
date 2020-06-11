@@ -1,0 +1,12 @@
+<h3>Dig Site <%= @dig_site.name %></h3>
+
+<h4>Units:</h4> 
+<form action="/dig_sites/<%= @dig_site.id %>/edit" method="post">
+<input type="hidden" name="_method" id="hidden" value="delete">
+<ul>
+    <% @dig_site.units.each do |unit| %>
+        <li><input type="checkbox" name="unit_<%= unit.id %>"> Unit: <a href="/units/<%= unit.id %>"><%= unit.local_id %>, <%= unit.size %></a></li></form>
+    <% end %>
+</ul>
+<input type="submit" value="Delete">
+</form>
