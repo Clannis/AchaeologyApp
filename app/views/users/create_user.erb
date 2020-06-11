@@ -1,4 +1,14 @@
-<form method="POST" action="/signup">
+<% if @user && @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+        <p class="danger"><%= message %></p>
+    <% end %>    
+<% end %>
+
+<% if @error %>
+        <p class="danger"><%= @error %></p>   
+<% end %>
+
+<form method="post" action="/signup">
     <label>Username: </label><input type="text" name="username" placeholder="Username"><br>
     <label>Email: </label><input type="text" name="email" placeholder="Email"><br>
     <label>Password: </label><input type="text" name="password" placeholder="Password"><br>

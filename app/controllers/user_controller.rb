@@ -11,13 +11,16 @@ class UserController < ApplicationController
 
     post "/signup" do
         if !params[:username].empty? && (!params[:email].empty? && params[:email].include?("@")) && !params[:password].empty?
-            user = User.new(username: params[:username], email: params[:email], password: params[:password])
-            if user.save
-              session[:user_id] = user.id
+            @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+            if @user.save
+              session[:user_id] = @user.id
               redirect "/dig_sites/index"
+            else
+              erb :"/users/create_user"
             end
         end
-        redirect "/signup"
+        @error = "All fields must be filled in."
+        erb :"/users/create_user"
     end
     
     get "/login" do
@@ -40,10 +43,11 @@ class UserController < ApplicationController
             redirect "/dig_sites/index"
           else
             @error = "Incorrect password"
-            redirect "/login"
+            erb :"/users/login"
+          end
         else
           @error = "Incorrect Username/Email"
-          redirect "/login"
+          erb :"/users/login"
         end
     end
 
