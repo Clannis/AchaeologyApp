@@ -7,4 +7,8 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
     set :database, {adapter: 'sqlite3', database: 'db/AADB.db'}
  end
 
+ if ENV['SINATRA_ENV'] == 'devlopment'
+   require_relative '../secrets'
+ end
+
  require_all 'app'

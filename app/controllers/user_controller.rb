@@ -24,7 +24,7 @@ class UserController < ApplicationController
         if session[:user_id]
           redirect "/dig_sites/index"
         else
-          erb :login
+          erb :"/users/login"
         end
     end
 
@@ -34,10 +34,15 @@ class UserController < ApplicationController
         else
             user = User.find_by(username: params[:user])
         end
-        if user && user.authenticate(params[:password])
-          session[:user_id] = user.id
-          redirect "/dig_sites/index"
+        if user 
+          if user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect "/dig_sites/index"
+          else
+            @error = "Incorrect password"
+            redirect "/login"
         else
+          @error = "Incorrect Username/Email"
           redirect "/login"
         end
     end
