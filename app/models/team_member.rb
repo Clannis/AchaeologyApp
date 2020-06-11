@@ -1,3 +1,4 @@
 class TeamMember < ActiveRecord::Base
-    belongs_to :dig_site
+    has_many :dig_sites, through: :teammember_digsite
+    belongs_to :user
 end

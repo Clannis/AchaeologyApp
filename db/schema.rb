@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_132620) do
+ActiveRecord::Schema.define(version: 2020_06_11_004906) do
 
   create_table "artifacts", force: :cascade do |t|
     t.integer "local_id"
     t.string "artifact_type"
     t.string "description"
     t.integer "level_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "dig_sites", force: :cascade do |t|
     t.string "name"
     t.string "location"
-    t.string "archaeologist"
     t.integer "user_id"
   end
 
@@ -39,7 +40,14 @@ ActiveRecord::Schema.define(version: 2020_06_08_132620) do
     t.integer "age"
     t.string "email"
     t.string "phone_number"
+    t.integer "user_id"
+  end
+
+  create_table "teammember_digsite", force: :cascade do |t|
+    t.integer "team_member_id"
     t.integer "dig_site_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "units", force: :cascade do |t|

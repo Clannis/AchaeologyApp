@@ -5,6 +5,7 @@ class CreateArtifacts < ActiveRecord::Migration[6.0]
       t.string :artifact_type
       t.string :description
       t.integer :level_id
+      t.timestamps
     end
   end
 end

@@ -6,7 +6,7 @@ class CreateTeamMembers < ActiveRecord::Migration[6.0]
       t.integer :age
       t.string :email
       t.string :phone_number
-      t.integer :dig_site_id
+      t.integer :user_id
     end
   end
 end

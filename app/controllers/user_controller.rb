@@ -11,7 +11,7 @@ class UserController < ApplicationController
 
     post "/signup" do
         if !params[:username].empty? && (!params[:email].empty? && params[:email].include?("@")) && !params[:password].empty?
-            user = User.new(username: params[:username], email: params[:email], password: params[:password])
+            user = User.new(username: params[:username], email: params[:email], password: params[:password], admin: params[:admin])
             if user.save
             session[:user_id] = user.id
             redirect "/dig_sites/index"
