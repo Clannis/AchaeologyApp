@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_06_08_130357) do
 
   create_table "artifacts", force: :cascade do |t|
-    t.integer "local_id"
+    t.string "local_id"
     t.string "artifact_type"
     t.string "description"
     t.integer "level_id"

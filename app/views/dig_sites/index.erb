@@ -1,12 +1,5 @@
 <h3><%= @user.display_name%>'s Dig Sites:</h3>
 
 <% @user.dig_sites.each do |dig_site| %>
-    <li><a href="/dig_sites/<%= dig_site.id %>"><%= dig_site.name %>, <%= dig_site.location %></a>
-            <%# <form method="post" action="/dig_sites/#{dig_site.id}/edit">
-            <input type="hidden" name="_method" id="hidden" value="patch">
-            <input type="submit" value="Update"></form>
-            <form method="post" action="/dig_sites/#{dig_site.id}/delete">
-            <input type="hidden" name="_method" id="hidden" value="delete">
-            <input type="submit" value="Delete"></form> %>
-            </li>
+    <li><a href="/dig_sites/<%= dig_site.id %>"><%= dig_site.name %>, <%= dig_site.location %></a></li>
 <% end %>

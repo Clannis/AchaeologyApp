@@ -1,0 +1,8 @@
+<h3> <%= @user.username %>'s Info:</h3>
+
+Name: <%= @user.display_name %><br>
+Email: <%= @user.email %><br>
+
+<form action="/users/<%= @user.id %>/edit" method="get">
+<input type="submit" value="Update">
+</form>
