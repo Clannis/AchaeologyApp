@@ -47,7 +47,7 @@ class DigSiteController < ApplicationController
     delete "/dig_sites/:id" do
         authenticate
         @dig_site = DigSite.find(params[:id])
-        if current_user.id = @dig_site.id
+        if current_user.id = @dig_site.user_id
             @dig_site.destroy
         end
         redirect "/dig_sites"
