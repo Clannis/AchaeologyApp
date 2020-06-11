@@ -1,5 +1,11 @@
 <h3>New Dig Site</h3>
 
+<% if @dig_site && @dig_site.errors.any? %>
+    <% @dig_site.errors.full_messages.each do |message| %>
+        <p class="danger"><%= message %></p>
+    <% end %>    
+<% end %>
+
 <form action="/dig_sites/new" method="post">
     <label for="name">Name: </label><input type="text" name="name" id="name"><br>
     <label for="location">Location: </label><input type="text" name="location" id="location"><br>

@@ -35,6 +35,13 @@ class DigSiteController < ApplicationController
         redirect :"/dig_sites"
     end
 
-    
+    post "/dig_sites/new" do
+        @dig_site = DigSite.new(name: params[:name], location: params[:location], user_id: current_user.id )
+        if @dig_site.save
+            redirect "/dig_sites/#{@dig_site.id}"
+        else
+            redirect "/dig_sites/new"
+        end
+    end
     
 end
