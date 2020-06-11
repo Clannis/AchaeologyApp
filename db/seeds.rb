@@ -1,6 +1,8 @@
-user1 = User.create(username: "prof1", email: "prof1@uni.edu", password: "prof1")
+require_relative '../config/environment'
+
+user1 = User.create(username: "prof1", email: "prof1@uni.edu", password: "prof1", name: "james-dodds")
 user2 = User.create(username: "stud1", email: "stud1@uni.edu", password: "stud1")
-user3 = User.create(username: "prof2", email: "prof2@uni.edu", password: "prof2")
+user3 = User.create(username: "prof2", email: "prof2@uni.edu", password: "prof2", name: "robert-dodds")
 user4 = User.create(username: "stud2", email: "stud2@uni.edu", password: "stud2")
 
 dig_site1 = DigSite.create(name: "0001", location: "spain", user_id: user1.id)

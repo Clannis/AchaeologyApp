@@ -31,6 +31,10 @@ class ApplicationController < Sinatra::Base
             redirect "/login" if !logged_in?
         end
 
+        def slug(text)
+            text.downcase.gsub(" ","-")
+        end
+
     end
     
 end
