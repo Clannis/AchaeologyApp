@@ -1,0 +1,5 @@
+<h3><%= @user.username%>'s Dig Sites</h3>
+
+<% @user.dig_sites.each do |dig_site| %>
+    <li><a href="/dig_site/#{dig_site.id}"><%= dig_site.name %>, <%= dig_site.location %></a></li>
+<% end %>
