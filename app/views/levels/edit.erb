@@ -1,0 +1,9 @@
+<h3>Level <%= @level.local_id %></h3>
+
+<form action="/levels/<%= @level.id %>" method="post">
+<input type="hidden" name="_method" id="hidden" value="patch">
+<label for="local_id">Level ID: </label> <input type="text" name="local_id" id="local_id" placeholder="<%= @level.local_id %>"><br>
+<label for="beg_depth">Beginning Depth: </label> <input type="text" name="beg_depth" id="beg_depth" placeholder="<%= @level.beg_depth %>"><br>
+<label for="end_depth">Ending Depth: </label> <input type="text" name="end_depth" id="end_depth" placeholder="<%= @level.end_depth %>"><br>
+<input type="submit" value="Update">
+</form>

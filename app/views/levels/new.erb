@@ -1,0 +1,14 @@
+<h3>New Level</h3>
+
+<% if @level && @level.errors.any? %>
+    <% @level.errors.full_messages.each do |message| %>
+        <p class="danger"><%= message %></p>
+    <% end %>    
+<% end %>
+
+<form action="/units/<%= @unit.id%>/levels/new" method="post">
+    <label for="local_id">Level ID: </label><input type="text" name="local_id" id="local_id"><br>
+    <label for="beg_depth">Beginning Depth: </label><input type="text" name="beg_depth" id="beg_depth"><br>
+    <label for="end_depth">Ending Depth: </label><input type="text" name="end_depth" id="end_depth"><br>
+    <input type="submit" value="Create Level">
+</form>

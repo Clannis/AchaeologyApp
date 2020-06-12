@@ -1,13 +1,20 @@
 <h3>Level: <%= @level.local_id %></h3>
+
+    <% if @error %>
+        <%= @error %>
+    <% end %>
+
+    <form method="get" action="/levels/<%= @level.id %>/edit">
+    <input type="submit" value="Update"></form>
+
+    <form method="post" action="/levels/<%= @level.id %>">
+    <input type="hidden" name="_method" id="hidden" value="delete">
+    <input type="submit" value="Delete"></form>
+
+    <h4>Artifacts:</h4>
+
 <ul>
     <% @level.artifacts.each do |artifact| %>
-        <li>Artifact: <a href="/artifacts/<%= artifact.id %>"><%= artifact.local_id %></a>
-            <%# <form method="get" action="/dig_sites/#{dig_site.id}/edit">
-            <input type="hidden" name="_method" id="hidden" value="patch">
-            <input type="submit" value="Update"></form>
-            <form method="post" action="/dig_sites/#{dig_site.id}/delete">
-            <input type="hidden" name="_method" id="hidden" value="delete">
-            <input type="submit" value="Delete"></form> %>
-            </li>
+        <li>Artifact: <a href="/artifacts/<%= artifact.id %>"><%= artifact.local_id %></a></li>
     <% end %>
 </ul>

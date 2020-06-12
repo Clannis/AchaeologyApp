@@ -1,4 +1,5 @@
-<h3>Dig Site <%= @dig_site.name %></h3>
+<h3>Dig Site: <%= @dig_site.name %></h3>
+<h4>In: <%= @dig_site.location %></h4>
     <form method="get" action="/dig_sites/<%= @dig_site.id %>/edit">
     <input type="submit" value="Update"></form>
 

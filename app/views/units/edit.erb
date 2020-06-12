@@ -2,7 +2,7 @@
 
 <form action="/units/<%= @unit.id %>" method="post">
 <input type="hidden" name="_method" id="hidden" value="patch">
-<label for="name">Unit ID: </label> <input type="text" name="local_id" id="local_id" placeholder="<%= @unit.local_id %>"><br>
+<label for="local_id">Unit ID: </label> <input type="text" name="local_id" id="local_id" placeholder="<%= @unit.local_id %>"><br>
 <label for="location">Unit Size: </label> <input type="text" name="size" id="size" placeholder="<%= @unit.size %>"><br>
 <input type="submit" value="Update">
 </form>
