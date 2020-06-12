@@ -1,0 +1,14 @@
+<h3>New Artifact</h3>
+
+<% if @artifact && @artifact.errors.any? %>
+    <% @artifact.errors.full_messages.each do |message| %>
+        <p class="danger"><%= message %></p>
+    <% end %>    
+<% end %>
+
+<form action="/levels/<%= @level.id%>/artifacts/new" method="post">
+    <label for="local_id">Artifact ID: </label><input type="text" name="local_id" id="local_id"><br>
+    <label for="artifact_type">Type: </label><input type="text" name="artifact_type" id="artifact_type"><br>
+    <label for="description">Description: </label><input type="text" name="description" id="description"><br>
+    <input type="submit" value="Create Artifact">
+</form>
