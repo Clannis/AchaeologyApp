@@ -1,23 +1,29 @@
 class ArtifactController < ApplicationController
 
     get "/levels/:id/artifacts/new" do
+        authenticate
         @level = Level.find(params[:id])
+        ownership(@level.unit.dig_site)
         erb :"/artifacts/new"
     end
     
     get "/artifacts/:id" do
+        authenticate
         @artifact = Artifact.find(params[:id])
-        @unit = @artifact.level
+        @level = @artifact.level
+        ownership(@level.unit.dig_site)
         @index = 0
-        while @unit.artifacts[@index] != @artifact do
+        while @level.artifacts[@index] != @artifact do
             @index += 1
         end
         erb :"/artifacts/show"
     end
 
     post "/levels/:id/artifacts/new" do
+        authenticate
         @level = Level.find(params[:id])
         @dig_site = @level.unit.dig_site
+        ownership(@dig_site)
         @artifact = Artifact.new(local_id: params[:local_id], artifact_type: params[:artifact_type], description: params[:description], level_id: @level.id)
         exists = false
         @dig_site.artifacts.each do |artifact|
@@ -38,13 +44,16 @@ class ArtifactController < ApplicationController
     end
 
     get "/artifacts/:id/edit" do
+        authenticate
         @artifact = Artifact.find(params[:id])
+        ownership(@artifact.level.unit.dig_site)
         erb :"/artifacts/edit"
     end
 
     patch "/artifacts/:id" do
+        authenticate
         @artifact = Artifact.find(params[:id])
-
+        ownership(@artifact.level.unit.dig_site)
         if !params[:local_id].empty?
             @level = @artifact.level
             exists = false
@@ -77,9 +86,8 @@ class ArtifactController < ApplicationController
         @artifact = Artifact.find(params[:id])
         @level = @artifact.level
         @dig_site = @artifact.level.unit.dig_site
-        if current_user.id = @dig_site.user_id
-            @artifact.destroy
-        end
+        ownership(@dig_site)
+        @artifact.destroy
         redirect "/levels/#{@level.id}"
     end
     

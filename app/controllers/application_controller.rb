@@ -36,10 +36,8 @@ class ApplicationController < Sinatra::Base
         end
 
         def ownership(object)
-            if current_user.id == object.id
-                true
-            else
-                false
+            if current_user.id != object.user_id
+                redirect "/dig_sites"
             end
         end
 

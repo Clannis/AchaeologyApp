@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
     has_many :dig_sites
-    has many :units, through: :dig_sites
-    has many :levels, through: :units
-    has many :artifacts, through: :levels
+    has_many :units, through: :dig_sites
+    has_many :levels, through: :units
+    has_many :artifacts, through: :levels
 
     has_secure_password
     validates :username, uniqueness: true

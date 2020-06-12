@@ -1,17 +1,23 @@
 class UnitController < ApplicationController
     
-    get "/dig_site/:id/units/new" do
+    get "/dig_sites/:id/units/new" do
+        authenticate
         @dig_site = DigSite.find(params[:id])
+        ownership(@dig_site)
         erb :"/units/new"
     end
 
     get "/units/:id" do
+        authenticate
         @unit = Unit.find(params[:id])
+        ownership(@unit.dig_site)
         erb :"/units/show"    
     end
 
-    post "/dig_site/:id/units/new" do
+    post "/dig_sites/:id/units/new" do
+        authenticate
         @dig_site = DigSite.find(params[:id])
+        ownership(@dig_site)
         @unit = Unit.new(size: params[:size], local_id: params[:local_id], dig_site_id: @dig_site.id)
         exists = false
         @dig_site.units.each do |unit|
@@ -32,13 +38,16 @@ class UnitController < ApplicationController
     end
 
     get "/units/:id/edit" do
+        authenticate
         @unit = Unit.find(params[:id])
+        ownership(@unit.dig_site)
         erb :"/units/edit"
     end
 
     patch "/units/:id" do
+        authenticate
         @unit = Unit.find(params[:id])
-
+        ownership(@unit.dig_site)
         if !params[:local_id].empty?
             @dig_site = @unit.dig_site
             exists = false
@@ -67,15 +76,14 @@ class UnitController < ApplicationController
         authenticate
         @unit = Unit.find(params[:id])
         @dig_site = @unit.dig_site
-        if current_user.id = @dig_site.user_id
-            @unit.artifacts.each do |artifact|
-                artifact.destroy
-            end
-            @unit.levels.each do |level|
-                level.destroy
-            end
-            @unit.destroy
+        ownership(@dig_site)
+        @unit.artifacts.each do |artifact|
+            artifact.destroy
         end
+        @unit.levels.each do |level|
+            level.destroy
+        end
+        @unit.destroy
         redirect "/dig_sites/#{@dig_site.id}"
     end
 

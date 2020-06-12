@@ -6,7 +6,7 @@
     <% end %>    
 <% end %>
 
-<form action="/dig_site/<%= @dig_site.id%>/units/new" method="post">
+<form action="/dig_sites/<%= @dig_site.id%>/units/new" method="post">
     <label for="size">Unit Size: </label><input type="text" name="size" id="size"><br>
     <label for="local_id">Unit ID: </label><input type="text" name="local_id" id="local_id"><br>
     <input type="submit" value="Create Unit">
