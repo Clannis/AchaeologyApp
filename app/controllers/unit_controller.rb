@@ -68,6 +68,12 @@ class UnitController < ApplicationController
         @unit = Unit.find(params[:id])
         @dig_site = @unit.dig_site
         if current_user.id = @dig_site.user_id
+            @unit.artifacts.each do |artifact|
+                artifact.destroy
+            end
+            @unit.levels.each do |level|
+                level.destroy
+            end
             @unit.destroy
         end
         redirect "/dig_sites/#{@dig_site.id}"

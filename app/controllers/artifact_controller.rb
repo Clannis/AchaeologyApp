@@ -17,9 +17,10 @@ class ArtifactController < ApplicationController
 
     post "/levels/:id/artifacts/new" do
         @level = Level.find(params[:id])
+        @dig_site = @level.unit.dig_site
         @artifact = Artifact.new(local_id: params[:local_id], artifact_type: params[:artifact_type], description: params[:description], level_id: @level.id)
         exists = false
-        @level.artifacts.each do |artifact|
+        @dig_site.artifacts.each do |artifact|
             if artifact.local_id == @artifact.local_id
                 exists = true
             end
@@ -74,11 +75,12 @@ class ArtifactController < ApplicationController
     delete "/artifacts/:id" do
         authenticate
         @artifact = Artifact.find(params[:id])
+        @level = @artifact.level
         @dig_site = @artifact.level.unit.dig_site
         if current_user.id = @dig_site.user_id
-            @level.destroy
+            @artifact.destroy
         end
-        redirect "/level/#{@artifact.level.id}"
+        redirect "/levels/#{@level.id}"
     end
     
 end

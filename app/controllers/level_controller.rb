@@ -71,6 +71,9 @@ class LevelController < ApplicationController
         @level = Level.find(params[:id])
         @dig_site = @level.unit.dig_site
         if current_user.id = @dig_site.user_id
+            @level.artifacts.each do |artifact|
+                artifact.destroy
+            end
             @level.destroy
         end
         redirect "/units/#{@level.unit.id}"

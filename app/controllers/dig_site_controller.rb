@@ -48,6 +48,15 @@ class DigSiteController < ApplicationController
         authenticate
         @dig_site = DigSite.find(params[:id])
         if current_user.id = @dig_site.user_id
+            @dig_site.artifacts.each do |artifact|
+                artifact.destroy
+            end
+            @dig_site.levels.each do |level|
+                level.destroy
+            end
+            @dig_site.units.each do |unit|
+                unit.destroy
+            end
             @dig_site.destroy
         end
         redirect "/dig_sites"
