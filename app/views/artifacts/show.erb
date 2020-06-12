@@ -2,6 +2,18 @@
 
 <h5>Type: <%= @artifact.artifact_type%></h5>
 <h5>Description: <%= @artifact.artifact_type%></h5>
+
+<% if @error %>
+    <%= @error %>
+<% end %>
+
+    <form method="get" action="/artifacts/<%= @artifact.id %>/edit">
+    <input type="submit" value="Update"></form>
+
+    <form method="post" action="/artifacts/<%= @artifact.id %>">
+    <input type="hidden" name="_method" id="hidden" value="delete">
+    <input type="submit" value="Delete"></form>
+
 <% if @index != 0 %>
     <a href="/artifacts/<%= @unit.artifacts[@index - 1].id %>">Previous Artifact</a>
 <% end %>

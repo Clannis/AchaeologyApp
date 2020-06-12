@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
     has_secure_password
     validates :username, uniqueness: true
+    vslidates :email, uniqueness: :true
     
     def display_name
         name.split("-").collect do |n|
