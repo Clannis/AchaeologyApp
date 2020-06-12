@@ -35,6 +35,14 @@ class ApplicationController < Sinatra::Base
             text.downcase.gsub(" ","-")
         end
 
+        def ownership(object)
+            if current_user.id == object.id
+                true
+            else
+                false
+            end
+        end
+
     end
     
 end
