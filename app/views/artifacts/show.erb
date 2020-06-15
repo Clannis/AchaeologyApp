@@ -14,7 +14,7 @@ Go To: <a href="/dig_sites">Dig Sites</a> > <a href="/dig_sites/<%= @artifact.le
 
     <form method="post" action="/artifacts/<%= @artifact.id %>">
     <input type="hidden" name="_method" id="hidden" value="delete">
-    <input type="submit" value="Delete"></form>
+    <input type="submit" value="Delete"></form><br>
 
 <% if @index != 0 %>
     <a href="/artifacts/<%= @level.artifacts[@index - 1].id %>">Previous Artifact</a>
