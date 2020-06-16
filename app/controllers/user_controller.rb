@@ -19,11 +19,14 @@ class UserController < ApplicationController
         if !params[:email].empty?
           @user.email = params[:email]
         end
+        if !params[:password].empty?
+          @user.password = params[:password]
+        end
         @user.save
-        redirect "/user/#{current_user.id}"
+        redirect "/users/#{current_user.id}"
       else
         error
-        redirect "/user/#{current_user.id}"
+        redirect "/users/#{current_user.id}"
       end
     end
     

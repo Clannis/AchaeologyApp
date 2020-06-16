@@ -1,7 +1,10 @@
-<h3><%= @user.display_name%>'s Dig Sites:</h3>
+<h3 class="object-title"><%= @user.display_name%>'s Dig Sites:</h3>
 
+<ul>
 <% @user.dig_sites.each do |dig_site| %>
-    <li>Dig: <a href="/dig_sites/<%= dig_site.id %>"><%= dig_site.name %></a>, Location: <%= dig_site.location %></li>
+    <li><a href="/dig_sites/<%= dig_site.id %>">Dig: <%= dig_site.name %>, Location: <%= dig_site.location %></a></li>
 <% end %>
+</ul>
+
 <br>
 <a href="/dig_sites/new">Create New Dig Site</a>

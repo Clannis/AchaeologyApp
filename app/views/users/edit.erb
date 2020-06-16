@@ -1,8 +1,16 @@
 <h3> <%= @user.username %>'s Info:</h3>
 
+<% if @user && @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+        <p class="danger"><%= message %></p>
+    <% end %>    
+<% end %>
+
 <form action="/users/<%= @user.id %>" method="post">
 <input type="hidden" name="_method" id="hidden" value="patch">
 <label for="name">Name: </label> <input type="text" name="name" id="name" placeholder="<%= @user.display_name %>"><br>
 <label for="location">Email: </label> <input type="text" name="email" id="email" placeholder="<%= @user.email %>"><br>
+<label for="password">Update Password: </label> <input type="password" name="password" placeholder="Password"> <br>
+<label for="password">Re-enter New Password: </label> <input type="password" name="password_confirmation" placeholder="Password">
 <input type="submit" value="Update">
 </form>

@@ -11,11 +11,11 @@
         <a href="/dig_sites/<%= @dig_site.id %>/artifacts/index">View All Dig Site Artifacts</a>
     <% end %>
 
-<h4>Units:</h4>   
+<h4>Units: <a href="/dig_sites/<%= @dig_site.id %>/units/new">Create New Unit</a></h4>   
 <ul>
     <% @dig_site.units.each do |unit| %>
-        <li>Unit: <a href="/units/<%= unit.id %>"><%= unit.local_id %>, <%= unit.size %></a></li>
+        <li><a href="/units/<%= unit.id %>">Unit: <%= unit.local_id %>, <%= unit.size %></a></li>
     <% end %>
 </ul>
 
-<a href="/dig_sites/<%= @dig_site.id %>/units/new">Create New Unit</a>
+
