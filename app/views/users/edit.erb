@@ -6,11 +6,13 @@
     <% end %>    
 <% end %>
 
+<h4>Fill in what information you would like to change <br>and enter your current password.</h4>
 <form action="/users/<%= @user.id %>" method="post">
-<input type="hidden" name="_method" id="hidden" value="patch">
-<label for="name">Name: </label> <input type="text" name="name" id="name" placeholder="<%= @user.display_name %>"><br>
-<label for="location">Email: </label> <input type="text" name="email" id="email" placeholder="<%= @user.email %>"><br>
-<label for="password">Update Password: </label> <input type="password" name="password" placeholder="Password"> <br>
-<label for="password">Confirm New Password: </label> <input type="password" name="password_confirmation" placeholder="Re-Enter Password">
-<input type="submit" value="Update">
+    <input type="hidden" name="_method" id="hidden" value="patch">
+    <label for="name">Name: </label> <input type="text" name="name" id="name" placeholder="<%= @user.display_name %>"><br>
+    <label for="location">Email: </label> <input type="text" name="email" id="email" placeholder="<%= @user.email %>"><br>
+    <label for="password">Current Password: </label> <input type="password" name="password" placeholder="Current Password"> <br>
+    <label for="new_password">Update Password: </label> <input type="password" name="new_password" placeholder="New Password"> <br>
+    <label for="new_password_confirmation">Confirm New Password: </label> <input type="password" name="new_password_confirmation" placeholder="Re-Enter New Password">
+    <input type="submit" value="Update">
 </form>

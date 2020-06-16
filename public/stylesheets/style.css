@@ -144,9 +144,10 @@ li{
     border-radius: 10px;
 }
 
-/* .artifact-nav-container{
-    display: inline-block;
-} */
+.danger{
+    color: red;
+    text-align: center;
+}
 
 .prev-artifact{
     float: left;
@@ -154,4 +155,19 @@ li{
 
 .next-artifact{
     float: right;
+}
+
+.arrow{
+    width: 50px;
+    height: 50px;    
+}
+
+.prev-arrow{
+    position: relative;
+    top: 20px;
+}
+
+.next-arrow{
+    position: relative;
+    top: 20px;
 }

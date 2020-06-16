@@ -17,12 +17,15 @@
     <input type="hidden" name="_method" id="hidden" value="delete">
     <input type="submit" value="Delete"></form><br>
 </div>
-<div class="artifact-nav-container">
+
     <% if @index != 0 %>
-        <a class="prev-artifact" href="/artifacts/<%= @level.artifacts[@index - 1].id %>">Previous Artifact</a>
+        <div class="prev-artifact">
+            <a class="prev-link" href="/artifacts/<%= @level.artifacts[@index - 1].id %>"><img class="prev-arrow arrow" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png"> Previous Artifact</a>
+        </div>
     <% end %>
     <% if @index != @level.artifacts.length - 1 %>
-        <a class="next-artifact" href="/artifacts/<%= @level.artifacts[@index + 1].id %>">Next Artifact</a>
+        <div class="next-artifact">
+            <a class="next-link" href="/artifacts/<%= @level.artifacts[@index + 1].id %>">Next Artifact <img class="next-arrow arrow" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Next_Arrow.svg/1200px-Next_Arrow.svg.png"></a>
+        </div>
     <% end %>
-</div>
 
