@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 
     get "/signup" do
+        logged_in_redirect
         if !session[:user_id]
           @error = false
           erb :"/users/create_user"
@@ -10,6 +11,7 @@ class UserController < ApplicationController
     end
 
     post "/signup" do
+        logged_in_redirect
         if !params[:username].empty? && (!params[:email].empty? && params[:email].include?("@")) && !params[:password].empty? && !params[:name].empty?
             @user = User.new(username: params[:username], email: params[:email], password: params[:password], name: slug(params[:name]))
             if @user.save
@@ -24,6 +26,7 @@ class UserController < ApplicationController
     end
     
     get "/login" do
+        logged_in_redirect
         if session[:user_id]
           redirect "/dig_sites"
         else
@@ -32,6 +35,7 @@ class UserController < ApplicationController
     end
 
     post "/login" do 
+        logged_in_redirect
         if params[:user].include?("@")
             user = User.find_by(email: params[:user])
         else

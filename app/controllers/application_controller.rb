@@ -26,6 +26,10 @@ class ApplicationController < Sinatra::Base
         def logged_in?
             !!session[:user_id]
         end
+
+        def logged_in_redirect
+            redsirect "/dig_sites" if logged_in?
+        end
     
         def authenticate
             redirect "/login" if !logged_in?
