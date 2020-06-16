@@ -1,9 +1,10 @@
-<h3>Dig Site <%= @dig_site.name %>'s Artifacts</h3>
-
-<ol>
-<% @artifacts.each do |artifact| %>
-    <li>ID: <%= artifact.local_id %>, Type: <%= artifact.artifact_type %>, Desc: <%= artifact.description %> <br> Location: Unit <%= artifact.level.unit.id %> - Level <%= artifact.level.id %> </li>
-<% end %>
-</ol>
-
 <a href="/dig_sites/<%= @dig_site.id %>">Back to Dig Site</a>
+
+<h3 >Dig Site <%= @dig_site.name %>'s Artifacts:</h3>
+
+<ul>
+<% @artifacts.each do |artifact| %>
+    <li><p>ID: <%= artifact.local_id %></p> <p>Type: <%= artifact.artifact_type %></p> <p>Desc: <%= artifact.description %></p> <p>Location: Unit <%= artifact.level.unit.id %> - Level <%= artifact.level.id %></p> </li>
+<% end %>
+</ul>
+
