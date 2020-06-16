@@ -40,6 +40,7 @@ class ArtifactController < ApplicationController
                 erb :"/artifacts/new"
             end
         else
+            @artifact.errors.add(:id, "already exists")
             erb :"/artifacts/new"
         end
     end
@@ -68,7 +69,7 @@ class ArtifactController < ApplicationController
             if !exists
                 @artifact.local_id = params[:local_id]
             else
-                @error = "Artifact ID already exits"
+                @artifact.errors.add(:id, "already exists")                
             end
         end
         if !params[:artifact_type].empty?
@@ -77,9 +78,12 @@ class ArtifactController < ApplicationController
         if !params[:description].empty?
             @artifact.description = params[:description]
         end
-        @artifact.save
-
-        redirect :"/artifacts/#{@artifact.id}"
+        if !@artifact.errors.any?
+            @artifact.save
+            redirect :"/artifacts/#{@artifact.id}"
+        else
+            erb :"/artifacts/edit"
+        end
     end
 
     delete "/artifacts/:id" do
@@ -95,13 +99,6 @@ class ArtifactController < ApplicationController
     get "/dig_sites/:id/artifacts/index" do
         @dig_site = DigSite.find(params[:id])
         @artifacts = @dig_site.artifacts
-        # @dig_site.units.each do |unit|
-        #     unit.levels.each do |level|
-        #         level.artifacts.each do |artifact|
-        #             @artifacts
-        #         end
-        #     end
-        # end
         erb :"/artifacts/index"
     end
     

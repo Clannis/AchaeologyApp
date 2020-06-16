@@ -34,6 +34,7 @@ class UnitController < ApplicationController
                 erb :"/units/new"
             end
         else
+            @unit.errors.add(:id, "already exists")
             erb :"/units/new"
         end
     end
@@ -62,15 +63,18 @@ class UnitController < ApplicationController
             if !exists
                 @unit.local_id = params[:local_id]
             else
-                @error = "Unit ID already exits"
+                @unit.errors.add(:id, "already exists")
             end
         end
         if !params[:size].empty?
             @unit.size = params[:size]
         end
-        @unit.save
-
-        redirect :"/units/#{@unit.id}"
+        if !@unit.errors.any?
+            @unit.save
+            redirect :"/units/#{@unit.id}"
+        else
+            erb :"/units/edit"
+        end
     end
  
     delete "/units/:id" do

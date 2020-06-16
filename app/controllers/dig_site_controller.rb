@@ -31,7 +31,17 @@ class DigSiteController < ApplicationController
         @dig_site = DigSite.find(params[:id])
         ownership(@dig_site)
         if !params[:name].empty?
-            @dig_site.name = params[:name]
+            exists = false
+            DigSite.all.each do |dig_site|
+                if dig_site.name == params[:name]
+                    exists = true
+                end
+            end
+            if !exists
+                @dig_site.name = params[:name]
+            else
+                @dig_site.errors.add(:name, "already exists")
+            end
         end
         if !params[:location].empty?
             @dig_site.location = params[:location]
@@ -39,13 +49,17 @@ class DigSiteController < ApplicationController
         if !params[:owner].empty?
             @dig_site.user_id = User.find_by_name(slug(params[:owner])).id
         end
-        @dig_site.save
-
-        redirect :"/dig_sites"
+        if !@dig_site.errors.any?
+            @dig_site.save
+            redirect :"/dig_sites"
+        else
+            erb :"/dig_sites/edit"
+        end
     end
 
     post "/dig_sites" do
         authenticate
+        @dig_site = DigSite.new(name: params[:name], location: params[:location], user_id: current_user.id)
         exists = false
         DigSite.all.each do |dig_site|
             if dig_site.name == params[:name]
@@ -53,13 +67,13 @@ class DigSiteController < ApplicationController
             end
         end
         if !exists
-            @dig_site = DigSite.new(name: params[:name], location: params[:location], user_id: current_user.id)
             if @dig_site.save
                 redirect "/dig_sites/#{@dig_site.id}"
             else
                 erb :"/dig_sites/new"
             end
         else
+            @dig_site.errors.add(:name, "already exists")
             erb :"/dig_sites/new"
         end
     end

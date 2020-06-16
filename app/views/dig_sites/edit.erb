@@ -1,5 +1,11 @@
 <h3>Dig Site <%= @dig_site.name %></h3>
 
+<% if @dig_site && @dig_site.errors.any? %>
+    <% @dig_site.errors.full_messages.each do |message| %>
+        <p class="danger"><%= message %></p>
+    <% end %>    
+<% end %>
+
 <form action="/dig_sites/<%= @dig_site.id %>" method="post">
 <input type="hidden" name="_method" id="hidden" value="patch">
 <label for="name">Dig Site Name: </label> <input type="text" name="name" id="name" placeholder="<%= @dig_site.name %>"><br>

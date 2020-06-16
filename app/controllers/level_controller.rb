@@ -34,6 +34,7 @@ class LevelController < ApplicationController
                 erb :"/levels/new"
             end
         else
+            @level.errors.add(:id, "already exists")
             erb :"/levels/new"
         end
     end
@@ -62,7 +63,7 @@ class LevelController < ApplicationController
             if !exists
                 @level.local_id = params[:local_id]
             else
-                @error = "Level ID already exits"
+                @level.errors.add(:id, "already exists")
             end
         end
         if !params[:beg_depth].empty?
@@ -71,9 +72,12 @@ class LevelController < ApplicationController
         if !params[:end_depth].empty?
             @level.end_depth = params[:end_depth]
         end
-        @level.save
-
-        redirect :"/levels/#{@level.id}"
+        if !@level.errors.any?
+            @level.save
+            redirect :"/levels/#{@level.id}"
+        else
+            erb :"/levels/edit"
+        end
     end
 
     delete "/levels/:id" do
