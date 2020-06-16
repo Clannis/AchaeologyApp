@@ -1,13 +1,17 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>AADB</title>
   </head>
   <body>
 
     <div class="container">
-      <h1>American Archaeological Database</h1>
       <%= render_navbar %>
+      <h1>American Archaeological Database</h1>
       <%= render_object_navbar(@object) %>
       <%= yield %>
     </div>

@@ -1,0 +1,24 @@
+html{
+    background-color: rgb(121, 99, 66);
+    font-family: 'Sriracha', cursive;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    height: 3em;
+    background-color: rgb(191, 87, 56);
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.navbar-logo{
+    height: 3em;
+    width: 3em;
+}
+
+body{
+    text-align: center;
+}
