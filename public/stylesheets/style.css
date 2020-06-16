@@ -1,6 +1,9 @@
 html{
-    background-color: rgb(121, 99, 66);
+    background-color: rgb(227, 204, 171);
     font-family: 'Sriracha', cursive;
+}
+body{
+    text-align: center;
 }
 
 .navbar{
@@ -19,6 +22,39 @@ html{
     width: 3em;
 }
 
-body{
+.object-navbar{
+    align-items: left;
+}
+
+.page-header{
     text-align: center;
+    text-shadow: 0px 2px 10px #615a5a;
+}
+
+img.site-logo{
+    height: 200px;
+    width: 250px;
+}
+
+.object-title{
+    background-color: aqua;
+    background-size: 200px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+ul{
+    padding: 15px;
+    margin: 0px auto 0px auto;
+    border-top: 2px solid #000;
+    text-align: center;
+}
+
+li{
+    display: inline;
+    margin: 0px 3px;
+    padding: 10px;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
 }
