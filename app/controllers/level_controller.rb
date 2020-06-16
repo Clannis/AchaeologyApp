@@ -31,10 +31,10 @@ class LevelController < ApplicationController
             if @level.save
                 redirect "/levels/#{@level.id}"
             else
-                redirect "/units/#{@unit.id}/levels/new"
+                erb :"/levels/new"
             end
         else
-            redirect "/units/#{@unit.id}/levels/new"
+            erb :"/levels/new"
         end
     end
 

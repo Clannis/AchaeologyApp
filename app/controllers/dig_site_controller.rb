@@ -46,11 +46,21 @@ class DigSiteController < ApplicationController
 
     post "/dig_sites" do
         authenticate
-        @dig_site = DigSite.new(name: params[:name], location: params[:location], user_id: current_user.id )
-        if @dig_site.save
-            redirect "/dig_sites/#{@dig_site.id}"
+        exists = false
+        DigSite.all.each do |dig_site|
+            if dig_site.name == params[:name]
+                exists = true
+            end
+        end
+        if !exists
+            @dig_site = DigSite.new(name: params[:name], location: params[:location], user_id: current_user.id)
+            if @dig_site.save
+                redirect "/dig_sites/#{@dig_site.id}"
+            else
+                erb :"/dig_sites/new"
+            end
         else
-            redirect "/dig_sites/new"
+            erb :"/dig_sites/new"
         end
     end
 

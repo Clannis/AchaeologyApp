@@ -37,10 +37,10 @@ class ArtifactController < ApplicationController
             if @artifact.save
                 redirect "/artifacts/#{@artifact.id}"
             else
-                redirect "/levels/#{@level.id}/artifacts/new"
+                erb :"/artifacts/new"
             end
         else
-            redirect "/levels/#{@level.id}/artifacts/new"
+            erb :"/artifacts/new"
         end
     end
 

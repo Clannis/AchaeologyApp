@@ -31,10 +31,10 @@ class UnitController < ApplicationController
             if @unit.save
                 redirect "/units/#{@unit.id}"
             else
-                redirect "/dig_site/#{@dig_site.id}/units/new"
+                erb :"/units/new"
             end
         else
-            redirect "/dig_site/#{@dig_site.id}/units/new"
+            erb :"/units/new"
         end
     end
 
