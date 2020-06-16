@@ -9,6 +9,8 @@ Go To: <a href="/dig_sites">Dig Sites</a>
     <input type="hidden" name="_method" id="hidden" value="delete">
     <input type="submit" value="Delete"></form>
 
+    <a href="/dig_sites/<%= @dig_site.id %>/artifacts/index">View All Dig Site Artifacts</a>
+
 <h4>Units:</h4>   
 <ul>
     <% @dig_site.units.each do |unit| %>

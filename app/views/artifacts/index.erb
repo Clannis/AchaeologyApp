@@ -1,0 +1,7 @@
+<h3>Dig Site <%= @dig_site.name %>'s Artifacts</h3>
+
+<ol>
+<% @artifacts.each do |artifact| %>
+    <li>ID: <%= artifact.local_id %>, Type: <%= artifact.artifact_type %>, Desc: <%= artifact.description %> <br> Location: Unit <%= artifact.level.unit.id %> - Level <%= artifact.level.id %> </li>
+<% end %>
+</ol>

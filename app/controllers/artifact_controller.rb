@@ -90,5 +90,18 @@ class ArtifactController < ApplicationController
         @artifact.destroy
         redirect "/levels/#{@level.id}"
     end
+
+    get "/dig_sites/:id/artifacts/index" do
+        @dig_site = DigSite.find(params[:id])
+        @artifacts = @dig_site.artifacts
+        # @dig_site.units.each do |unit|
+        #     unit.levels.each do |level|
+        #         level.artifacts.each do |artifact|
+        #             @artifacts
+        #         end
+        #     end
+        # end
+        erb :"/artifacts/index"
+    end
     
 end
