@@ -12,16 +12,13 @@ class SessionController < ApplicationController
 
     post "/signup" do
         logged_in_redirect
-        if !params[:username].empty? && (!params[:email].empty? && params[:email].include?("@")) && !params[:password].empty? && !params[:name].empty?
-            @user = User.new(username: params[:username], email: params[:email], password: params[:password], name: slug(params[:name]))
-            if @user.save
-              session[:user_id] = @user.id
-              redirect "/dig_sites"
-            else
-              erb :"/sessions/create_user"
-            end
-        end
-        @error = "All fields must be filled in."
+          @user = User.new(username: params[:username], email: params[:email], password: params[:password], name: slug(params[:name]), password_confirmation: params[:password_confirmation])
+          if @user.save
+            session[:user_id] = @user.id
+            redirect "/dig_sites"
+          else
+            erb :"/sessions/create_user"
+          end
         erb :"/sessions/create_user"
     end
     
