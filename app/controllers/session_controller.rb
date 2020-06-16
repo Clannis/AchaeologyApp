@@ -34,13 +34,13 @@ class SessionController < ApplicationController
     post "/login" do 
         logged_in_redirect
         if params[:user].include?("@")
-            user = User.find_by(email: params[:user])
+            @user = User.find_by(email: params[:user])
         else
-            user = User.find_by(username: params[:user])
+            @user = User.find_by(username: params[:user])
         end
-        if user 
-          if user.authenticate(params[:password])
-            session[:user_id] = user.id
+        if @user 
+          if @user.authenticate(params[:password])
+            session[:user_id] = @user.id
             redirect "/dig_sites"
           else
             @error = "Incorrect password"
