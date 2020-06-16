@@ -2,9 +2,18 @@ html{
     background-color: rgb(227, 204, 171);
     font-family: 'Sriracha', cursive;
 }
-/* body{
+
+.align-center{
     text-align: center;
-} */
+}
+
+.welcome-img{
+    display: block;
+    margin: 0px auto;
+    width: auto;
+    height: auto;
+
+}
 
 .navbar{
     display: flex;
@@ -22,6 +31,22 @@ html{
     width: 3em;
 }
 
+a.nav-links{
+    color: black;
+}
+
+a.nav-links:hover{
+    color: darkorange;
+}
+
+a{
+    color: rgba(47, 38, 218, 0.86);
+}
+
+a:hover{
+    color: darkred;
+}
+
 .object-navbar{
     align-items: left;
     border-bottom: 1.5px solid #000;
@@ -29,6 +54,11 @@ html{
 
 .site-header{
     display: block;
+    width: fit-content;
+}
+a.site-header{
+    text-decoration: none;
+    color: black;
 }
 
 .page-header{
@@ -37,8 +67,8 @@ html{
 
 img.site-logo{
     float: left;
-    height: 142px;
-    width: 200px;
+    height: 125px;
+    width: 175px;
 }
 
 .object-title{
@@ -49,6 +79,27 @@ img.site-logo{
     margin-right: auto;
     justify-content: center;
     text-align: center;
+    border-radius: 10px;
+}
+
+.dig-site-location{
+    background-color: rgb(176, 94, 211);
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+div.ud-container{
+    text-align: center;
+}
+
+.ud-buttons{
+    display: inline-block;
+    
 }
 
 ul{
@@ -60,11 +111,47 @@ ul{
 
 li{
     display: inline;
+    float: left;
     margin: 0px 3px;
+    margin-top: 3px;
     padding: 10px;
     border-left: 1px solid #000;
     border-right: 1px solid #000;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
     background-color: darkgray;
+}
+
+.artifact-container{
+    background-color: darkgrey;
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+}
+.artifact{
+    background-color: lightblue;
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* .artifact-nav-container{
+    display: inline-block;
+} */
+
+.prev-artifact{
+    float: left;
+}
+
+.next-artifact{
+    float: right;
 }

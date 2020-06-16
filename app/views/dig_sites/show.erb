@@ -1,15 +1,18 @@
 <h3 class="object-title">Dig Site: <%= @dig_site.name %></h3>
-<h4>Located In: <%= @dig_site.location %></h4>
-    <form method="get" action="/dig_sites/<%= @dig_site.id %>/edit">
-    <input type="submit" value="Update"></form>
+<h4 class="dig-site-location">Located In: <%= @dig_site.location %></h4>
+    <div class="ud-container">
+        <form class="ud-buttons" method="get" action="/dig_sites/<%= @dig_site.id %>/edit">
+        <input type="submit" value="Update"></form>
 
-    <form method="post" action="/dig_sites/<%= @dig_site.id %>">
-    <input type="hidden" name="_method" id="hidden" value="delete">
-    <input type="submit" value="Delete"></form>
-    <br>
+        <form class="ud-buttons" method="post" action="/dig_sites/<%= @dig_site.id %>">
+        <input type="hidden" name="_method" id="hidden" value="delete">
+        <input type="submit" value="Delete"></form>
+    </div>
+        <br>
     <% if @dig_site.artifacts.length > 0%>
         <a href="/dig_sites/<%= @dig_site.id %>/artifacts/index">View All Dig Site Artifacts</a>
     <% end %>
+    
 
 <h4>Units: <a href="/dig_sites/<%= @dig_site.id %>/units/new">Create New Unit</a></h4>   
 <ul>

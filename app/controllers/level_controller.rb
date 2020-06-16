@@ -21,8 +21,8 @@ class LevelController < ApplicationController
         ownership(@unit.dig_site)
         @level = Level.new(local_id: params[:local_id], beg_depth: params[:beg_depth], end_depth: params[:end_depth], unit_id: @unit.id)
         exists = false
-        @unit.levels.each do |unit|
-            if unit.local_id == @unit.local_id
+        @unit.levels.each do |level|
+            if level.local_id == @level.local_id
                 exists = true
             end
         end

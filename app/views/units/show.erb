@@ -4,18 +4,18 @@
         <%= @error %>
     <% end %>
 
-    <form method="get" action="/units/<%= @unit.id %>/edit">
+<div class="ud-container">
+    <form class="ud-buttons" method="get" action="/units/<%= @unit.id %>/edit">
     <input type="submit" value="Update"></form>
 
-    <form method="post" action="/units/<%= @unit.id %>">
+    <form class="ud-buttons" method="post" action="/units/<%= @unit.id %>">
     <input type="hidden" name="_method" id="hidden" value="delete">
     <input type="submit" value="Delete"></form>
+</div>
 
-    <h4>Levels:</h4>
+    <h4>Levels: <a href="/units/<%= @unit.id %>/levels/new">Create New Level</a></h4>
 <ul>
     <% @unit.levels.each do |level| %>
         <li>Level: <a href="/levels/<%= level.id %>"><%= level.local_id %>, <%= level.beg_depth %> - <%= level.end_depth %></a></li>
     <% end %>
 </ul>
-
-<a href="/units/<%= @unit.id %>/levels/new">Create New Level</a>

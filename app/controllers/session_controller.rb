@@ -47,7 +47,7 @@ class SessionController < ApplicationController
             erb :"/sessions/login"
           end
         else
-          @error = "Incorrect Username/Email"
+          @error = "No account associated with that Username or Email."
           erb :"/sessions/login"
         end
     end
