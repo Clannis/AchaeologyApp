@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     has_secure_password
     validates :username, uniqueness: true
     validates :email, uniqueness: :true
+    validates :password, length: {in: 6..20}, unless: Proc.new{ |user| user.password.blank? }
     
     def display_name
         name.split("-").collect do |n|

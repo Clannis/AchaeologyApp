@@ -1,4 +1,4 @@
-<h3> <%= @user.username %>'s Info:</h3>
+<h3> <%= @user.display_name %>'s Info:</h3>
 
 <% if @user && @user.errors.any? %>
     <% @user.errors.full_messages.each do |message| %>
