@@ -1,0 +1,14 @@
+<% if @error %>
+    <%= @error %>
+<% end %>
+
+
+<h3>Log In</h3>
+
+<form method="POST" action="/login">
+    <label>Username/Email: </label><input type="text" name="user" placeholder="Username/Email"><br>
+    <label>Password: </label><input type="password" name="password" placeholder="Password"><br>
+    <input type="submit" value="submit">
+</form><br>
+
+<a href="/signup">Create New User</a>
