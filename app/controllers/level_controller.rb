@@ -11,6 +11,7 @@ class LevelController < ApplicationController
         authenticate
         @level = Level.find(params[:id])
         ownership(@level.unit.dig_site)
+        @object = @level
         erb :"/levels/show"
     end
 

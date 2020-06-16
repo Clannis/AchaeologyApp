@@ -12,6 +12,7 @@ class ArtifactController < ApplicationController
         @artifact = Artifact.find(params[:id])
         @level = @artifact.level
         ownership(@level.unit.dig_site)
+        @object = @artifact
         @index = 0
         while @level.artifacts[@index] != @artifact do
             @index += 1

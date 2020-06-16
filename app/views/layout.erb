@@ -7,13 +7,8 @@
 
     <div class="container">
       <h1>American Archaeological Database</h1>
-      <div class="links">
-        <h5><a href="/">Go Home</a>
-        <% if logged_in? %> 
-          | <a href="/logout">Log Out</a>
-          | <a href="/users/<%= current_user.id %>">Account</a>
-        <% end %></h5>
-      </div>
+      <%= render_navbar %>
+      <%= render_object_navbar(@object) %>
       <%= yield %>
     </div>
 

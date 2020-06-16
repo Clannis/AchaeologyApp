@@ -11,6 +11,7 @@ class UnitController < ApplicationController
         authenticate
         @unit = Unit.find(params[:id])
         ownership(@unit.dig_site)
+        @object = @unit
         erb :"/units/show"    
     end
 

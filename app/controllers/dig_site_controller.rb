@@ -15,6 +15,7 @@ class DigSiteController < ApplicationController
         authenticate
         @dig_site = DigSite.find(params[:id])
         ownership(@dig_site)
+        @object = @dig_site
         erb :"/dig_sites/show"
     end
 
