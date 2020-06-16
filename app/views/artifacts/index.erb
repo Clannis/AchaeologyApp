@@ -5,3 +5,5 @@
     <li>ID: <%= artifact.local_id %>, Type: <%= artifact.artifact_type %>, Desc: <%= artifact.description %> <br> Location: Unit <%= artifact.level.unit.id %> - Level <%= artifact.level.id %> </li>
 <% end %>
 </ol>
+
+<a href="/dig_sites/<%= @dig_site.id %>">Back to Dig Site</a>
