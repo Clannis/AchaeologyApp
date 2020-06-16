@@ -4,7 +4,7 @@ class SessionController < ApplicationController
         logged_in_redirect
         if !session[:user_id]
           @error = false
-          erb :"/users/create_user"
+          erb :"/sessions/create_user"
         else
           redirect "/dig_sites"
         end
@@ -18,11 +18,11 @@ class SessionController < ApplicationController
               session[:user_id] = @user.id
               redirect "/dig_sites"
             else
-              erb :"/users/create_user"
+              erb :"/sessions/create_user"
             end
         end
         @error = "All fields must be filled in."
-        erb :"/users/create_user"
+        erb :"/sessions/create_user"
     end
     
     get "/login" do
@@ -30,7 +30,7 @@ class SessionController < ApplicationController
         if session[:user_id]
           redirect "/dig_sites"
         else
-          erb :"/users/login"
+          erb :"/sessions/login"
         end
     end
 
@@ -47,11 +47,11 @@ class SessionController < ApplicationController
             redirect "/dig_sites"
           else
             @error = "Incorrect password"
-            erb :"/users/login"
+            erb :"/sessions/login"
           end
         else
           @error = "Incorrect Username/Email"
-          erb :"/users/login"
+          erb :"/sessions/login"
         end
     end
 
