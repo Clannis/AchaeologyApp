@@ -108,7 +108,7 @@ describe SessionController do
         
         describe "Logged In" do
             
-            it 'sign up directs user to dig page index' do
+            it 'valid sign up logs user in and directs user to dig page index' do
                 get '/logout'
 
                 params = {
