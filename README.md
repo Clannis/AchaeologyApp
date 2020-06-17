@@ -27,4 +27,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## License
-[MIT](https://github.com/Clannis/AchaeologyApp/blob/master/LICENSE)
+Available as open source under the terms of the [MIT License.](https://github.com/Clannis/AchaeologyApp/blob/master/LICENSE)
