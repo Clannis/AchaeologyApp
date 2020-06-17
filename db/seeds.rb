@@ -1,9 +1,8 @@
 require_relative '../config/environment'
 
-user1 = User.create(username: "prof1", email: "prof1@uni.edu", password: "prof1", name: "ralf-sanchez")
-user2 = User.create(username: "stud1", email: "stud1@uni.edu", password: "stud1", name: "maria-smith")
-user3 = User.create(username: "prof2", email: "prof2@uni.edu", password: "prof2", name: "alex-daniels")
-user4 = User.create(username: "stud2", email: "stud2@uni.edu", password: "stud2", name: "michael-johnson")
+user1 = User.create(username: "prof1", email: "prof1@uni.edu", password: "password", name: "ralf-sanchez")
+user2 = User.create(username: "stud1", email: "stud1@uni.edu", password: "password", name: "maria-smith")
+user3 = User.create(username: "prof2", email: "prof2@uni.edu", password: "password", name: "alex-daniels")
 
 dig_site1 = DigSite.create(name: "0001", location: "spain", user_id: user1.id)
 dig_site2 = DigSite.create(name: "0002", location: "rome", user_id: user3.id)
