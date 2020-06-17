@@ -4,7 +4,14 @@
 
 ## Description
 
-AADB is a database created to record artifacts found by archaeologists organized by site relevence. The organization is broken down by dig site > unit > level. 
+AADB is a database created to record artifacts found by archaeologists organized by site relevence. The organization is broken down by dig site > unit > level > artifact. 
+
+#### Atributes
+
+* Dig Sites - Name, Location
+* Units - Local ID, Size
+* Levels - Local ID, Beginning Depth, Ending Depth
+* Artifacts - Local ID, Type, Description
 
 ## Installation
 
