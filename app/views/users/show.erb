@@ -6,3 +6,8 @@ Email: <%= @user.email %><br>
 <form action="/users/<%= @user.id %>/edit" method="get">
 <input type="submit" value="Update">
 </form>
+
+<form action="/users/<%= @user.id %>" method="post">
+<input type="hidden" name="_method" id="hidden" value="delete">
+<input type="submit" value="Delete">
+</form>

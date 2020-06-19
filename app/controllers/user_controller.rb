@@ -48,5 +48,31 @@ class UserController < ApplicationController
         erb :"/users/edit"
       end
     end
+
+    delete "/users/:id" do
+      authenticate
+      @user = User.find(params[:id])
+      binding.pry
+      if @user == current_user
+        binding.pry
+        @user.dig_sites.each do |dig_site|
+          dig_site.artifacts.each do |artifact|
+            artifact.destroy
+          end
+          dig_site.levels.each do |level|
+              level.destroy
+          end
+          dig_site.units.each do |unit|
+              unit.destroy
+          end
+          dig_site.destroy
+        end
+        @user.destroy
+        session.clear
+        redirect "/"
+      else
+        redirect "/dig_sites"
+      end
+    end
     
 end
