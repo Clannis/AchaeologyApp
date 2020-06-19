@@ -25,22 +25,33 @@ class ArtifactController < ApplicationController
         @level = Level.find(params[:id])
         @dig_site = @level.unit.dig_site
         ownership(@dig_site)
-        @artifact = Artifact.new(local_id: params[:local_id], artifact_type: params[:artifact_type], description: params[:description], level_id: @level.id)
-        exists = false
-        @dig_site.artifacts.each do |artifact|
-            if artifact.local_id == @artifact.local_id
-                exists = true
-            end
-        end
-
-        if !exists
-            if @artifact.save
-                redirect "/artifacts/#{@artifact.id}"
-            else
+        @artifact = Artifact.new()
+        if !params[:local_id].empty? && !params[:artifact_type].empty? && !params[:description].empty?
+            if params[:description] == "Enter description here..."
+                @artifact.errors.add(:description, "must be altered.")
                 erb :"/artifacts/new"
+            else
+                @artifact = Artifact.new(local_id: params[:local_id], artifact_type: params[:artifact_type], description: params[:description], level_id: @level.id)
+                exists = false
+                @dig_site.artifacts.each do |artifact|
+                    if artifact.local_id == @artifact.local_id
+                        exists = true
+                    end
+                end
+
+                if !exists
+                    if @artifact.save
+                        redirect "/artifacts/#{@artifact.id}"
+                    else
+                        erb :"/artifacts/new"
+                    end
+                else
+                    @artifact.errors.add(:id, "already exists")
+                    erb :"/artifacts/new"
+                end
             end
         else
-            @artifact.errors.add(:id, "already exists")
+            @artifact.errors.add(:field, "is empty.")
             erb :"/artifacts/new"
         end
     end
