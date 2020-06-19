@@ -59,21 +59,29 @@ class DigSiteController < ApplicationController
 
     post "/dig_sites" do
         authenticate
-        @dig_site = DigSite.new(name: params[:name], location: params[:location], user_id: current_user.id)
-        exists = false
-        DigSite.all.each do |dig_site|
-            if dig_site.name == params[:name]
-                exists = true
+        @dig_site = DigSite.new()
+        if !params[:name].empty? && !params[:location].empty?
+            exists = false
+            DigSite.all.each do |dig_site|
+                if dig_site.name == params[:name]
+                    exists = true
+                end
             end
-        end
-        if !exists
-            if @dig_site.save
-                redirect "/dig_sites/#{@dig_site.id}"
+            if !exists
+                @dig_site.name = params[:name]
+                @dig_site.location = params[:location]
+                @dig_site.user_id = current_user.id
+                if @dig_site.save
+                    redirect "/dig_sites/#{@dig_site.id}"
+                else
+                    erb :"/dig_sites/new"
+                end
             else
+                @dig_site.errors.add(:name, "already exists")
                 erb :"/dig_sites/new"
             end
         else
-            @dig_site.errors.add(:name, "already exists")
+            @dig_site.errors.add(:field, "is empty.")
             erb :"/dig_sites/new"
         end
     end

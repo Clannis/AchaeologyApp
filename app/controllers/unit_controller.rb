@@ -19,22 +19,28 @@ class UnitController < ApplicationController
         authenticate
         @dig_site = DigSite.find(params[:id])
         ownership(@dig_site)
-        @unit = Unit.new(size: params[:size], local_id: params[:local_id], dig_site_id: @dig_site.id)
-        exists = false
-        @dig_site.units.each do |unit|
-            if unit.local_id == @unit.local_id
-                exists = true
+        @unit = Unit.new()
+        if !params[:size].empty? && !params[:local_id].empty?
+            @unit = Unit.new(size: params[:size], local_id: params[:local_id], dig_site_id: @dig_site.id)
+            exists = false
+            @dig_site.units.each do |unit|
+                if unit.local_id == @unit.local_id
+                    exists = true
+                end
             end
-        end
 
-        if !exists
-            if @unit.save
-                redirect "/units/#{@unit.id}"
+            if !exists
+                if @unit.save
+                    redirect "/units/#{@unit.id}"
+                else
+                    erb :"/units/new"
+                end
             else
+                @unit.errors.add(:id, "already exists")
                 erb :"/units/new"
             end
         else
-            @unit.errors.add(:id, "already exists")
+            @unit.errors.add(:field, "is empty.")
             erb :"/units/new"
         end
     end
