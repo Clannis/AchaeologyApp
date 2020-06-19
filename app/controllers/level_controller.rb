@@ -19,22 +19,28 @@ class LevelController < ApplicationController
         authenticate
         @unit = Unit.find(params[:id])
         ownership(@unit.dig_site)
-        @level = Level.new(local_id: params[:local_id], beg_depth: params[:beg_depth], end_depth: params[:end_depth], unit_id: @unit.id)
-        exists = false
-        @unit.levels.each do |level|
-            if level.local_id == @level.local_id
-                exists = true
+        @level = Level.new()
+        if !params[:local_id].empty? && !params[:beg_depth].empty? && !params[:end_depth].empty?
+            @level = Level.new(local_id: params[:local_id], beg_depth: params[:beg_depth], end_depth: params[:end_depth], unit_id: @unit.id)
+            exists = false
+            @unit.levels.each do |level|
+                if level.local_id == @level.local_id
+                    exists = true
+                end
             end
-        end
 
-        if !exists
-            if @level.save
-                redirect "/levels/#{@level.id}"
+            if !exists
+                if @level.save
+                    redirect "/levels/#{@level.id}"
+                else
+                    erb :"/levels/new"
+                end
             else
+                @level.errors.add(:id, "already exists")
                 erb :"/levels/new"
             end
         else
-            @level.errors.add(:id, "already exists")
+            @level.errors.add(:field, "is empty.")
             erb :"/levels/new"
         end
     end
