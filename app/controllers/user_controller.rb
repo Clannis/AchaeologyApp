@@ -52,9 +52,7 @@ class UserController < ApplicationController
     delete "/users/:id" do
       authenticate
       @user = User.find(params[:id])
-      binding.pry
       if @user == current_user
-        binding.pry
         @user.dig_sites.each do |dig_site|
           dig_site.artifacts.each do |artifact|
             artifact.destroy
