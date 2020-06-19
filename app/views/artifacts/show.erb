@@ -1,8 +1,8 @@
-<h3 class="object-title">Artifact: <%= @artifact.local_id %></h3>
+<h3 class="object-title">Dig Site: <%= @artifact.level.unit.dig_site.name %>, Unit: <%= @artifact.level.unit.local_id %>, Level: <%= @artifact.level.local_id %><br> Artifact: <%= @artifact.local_id %></h3>
 
 <div class="artifact-container">
     <h5 class="artifact">Type: <%= @artifact.artifact_type%></h5>
-    <h5 class="artifact">Description: <%= @artifact.artifact_type%></h5>
+    <h5 class="artifact">Description: <%= @artifact.description%></h5>
 </div>
 
 <% if @error %>

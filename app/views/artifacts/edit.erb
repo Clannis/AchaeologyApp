@@ -10,6 +10,7 @@
 <input type="hidden" name="_method" id="hidden" value="patch">
 <label for="local_id">Artifact ID: </label> <input type="text" name="local_id" id="local_id" placeholder="<%= @artifact.local_id %>"><br>
 <label for="artifact_type">Type: </label> <input type="text" name="artifact_type" id="artifact_type" placeholder="<%= @artifact.artifact_type %>"><br>
-<label for="description">Description: </label> <input type="text" name="description" id="description" placeholder="<%= @artifact.description %>"><br>
+<label for="description">Description: </label> <br>
+<textarea name="description" id="description" rows="4" cols="40"><%= @artifact.description %></textarea><br>
 <input type="submit" value="Update">
 </form>
