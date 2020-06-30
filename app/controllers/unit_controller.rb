@@ -21,7 +21,7 @@ class UnitController < ApplicationController
         ownership(@dig_site)
         @unit = Unit.new()
         if !params[:size].empty? && !params[:local_id].empty?
-            @unit = Unit.new(size: params[:size], local_id: params[:local_id], dig_site_id: @dig_site.id)
+            @unit = @dig_site.units.build(size: params[:size], local_id: params[:local_id])
             exists = false
             @dig_site.units.each do |unit|
                 if unit.local_id == @unit.local_id

@@ -109,7 +109,7 @@ class ArtifactController < ApplicationController
 
     get "/dig_sites/:id/artifacts/index" do
         @dig_site = DigSite.find(params[:id])
-        @artifacts = @dig_site.artifacts
+        @artifacts = @dig_site.artifacts.sort_by &:created_at
         erb :"/artifacts/index"
     end
     
